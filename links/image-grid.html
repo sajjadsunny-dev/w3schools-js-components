@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W3Schools - Image Grid</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 1170px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap;
+            /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%;
+            /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        /* Style the buttons */
+        .btn {
+            border: none;
+            outline: none;
+            padding: 10px 16px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn.active {
+            background-color: #666;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header" id="myHeader">
+            <h1>Image Grid</h1>
+            <p>Click on the buttons to change the grid view.</p>
+            <button class="btn" onclick="one()">1</button>
+            <button class="btn active" onclick="two()">2</button>
+            <button class="btn" onclick="four()">4</button>
+        </div>
+
+        <!-- Photo Grid -->
+        <div class="row">
+            <div class="column">
+                <img src="../images/image_grid/wedding.jpg" style="width:100%">
+                <img src="../images/image_grid/rocks.jpg" style="width:100%">
+                <img src="../images/image_grid/falls2.jpg" style="width:100%">
+                <img src="../images/image_grid/paris.jpg" style="width:100%">
+                <img src="../images/image_grid/nature.jpg" style="width:100%">
+                <img src="../images/image_grid/mist.jpg" style="width:100%">
+                <img src="../images/image_grid/paris.jpg" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="../images/image_grid/underwater.jpg" style="width:100%">
+                <img src="../images/image_grid/ocean.jpg" style="width:100%">
+                <img src="../images/image_grid/wedding.jpg" style="width:100%">
+                <img src="../images/image_grid/mountainskies.jpg" style="width:100%">
+                <img src="../images/image_grid/rocks.jpg" style="width:100%">
+                <img src="../images/image_grid/underwater.jpg" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="../images/image_grid/wedding.jpg" style="width:100%">
+                <img src="../images/image_grid/rocks.jpg" style="width:100%">
+                <img src="../images/image_grid/falls2.jpg" style="width:100%">
+                <img src="../images/image_grid/paris.jpg" style="width:100%">
+                <img src="../images/image_grid/nature.jpg" style="width:100%">
+                <img src="../images/image_grid/mist.jpg" style="width:100%">
+                <img src="../images/image_grid/paris.jpg" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="../images/image_grid/underwater.jpg" style="width:100%">
+                <img src="../images/image_grid/ocean.jpg" style="width:100%">
+                <img src="../images/image_grid/wedding.jpg" style="width:100%">
+                <img src="../images/image_grid/mountainskies.jpg" style="width:100%">
+                <img src="../images/image_grid/rocks.jpg" style="width:100%">
+                <img src="../images/image_grid/underwater.jpg" style="width:100%">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the elements with class="column"
+        let elements = document.querySelectorAll(".column");
+        let elementsArr = Array.from(elements);
+
+        // Declare a loop variable
+        var i;
+
+        // Full-width images
+        function one() {
+            elementsArr.map((items) => {
+                items.style.msFlex = "100%";  // IE10
+                items.style.flex = "100%";
+            });
+        }
+
+        // Two images side by side
+        function two() {
+            elementsArr.map((items) => {
+                items.style.msFlex = "50%";  // IE10
+                items.style.flex = "50%";
+            });
+        }
+
+        // Four images side by side
+        function four() {
+            elementsArr.map((items) => {
+                items.style.msFlex = "25%";  // IE10
+                items.style.flex = "25%";
+            });
+        }
+
+        // Add active class to the current button (highlight it)
+        let header = document.querySelector("#myHeader");
+        let btns = header.querySelectorAll(".btn");
+        let btnsArr = Array.from(btns);
+
+        btnsArr.map((items) => {
+            items.addEventListener("click", function () {
+                let current = document.querySelectorAll(".active");
+                let currentArr = Array.from(current);
+                currentArr.map((item) => {
+                    item.className = item.className.replace(" active", "");
+                })
+                items.className += " active";
+            });
+        });
+    </script>
+</body>
+
+</html>
